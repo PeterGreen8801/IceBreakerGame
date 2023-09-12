@@ -31,13 +31,31 @@ public class Player : MonoBehaviour
             canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirectionX, moveDistance);
 
             //Testing here
+            Ray ray = new Ray(transform.position, transform.forward);
 
+            float maxDistance = 1f;
 
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, maxDistance))
+            {
+                // Check if the object hit has the specified tag.
+                if (hit.collider.CompareTag("BreakableFloor"))
+                {
+                    // The ray hit an object with the specified tag.
+                    Debug.Log("Object with tag BreakableFloor" + " is in front of the player.");
+
+                    // You can perform additional actions here, such as interacting with the object.
+                }
+            }
+
+            /*
             if (Physics.Raycast(transform.position, transform.forward, 1f))
             {
                 //Detection
                 Debug.Log("Detected something");
             }
+            */
 
             if (canMove)
             {
