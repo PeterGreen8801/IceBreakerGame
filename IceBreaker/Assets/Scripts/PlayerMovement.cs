@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving = false;
     private Vector3 targetPosition;
 
+    [SerializeField] private GameInput gameInput;
+
     void Update()
     {
         if (!isMoving)
@@ -48,7 +50,21 @@ public class PlayerMovement : MonoBehaviour
             if (collider.CompareTag("Wall"))
             {
                 canMove = false;
+                Debug.Log("There is a wall in the way");
                 break;
+            }
+            if (collider.CompareTag("IceFloor"))
+            {
+                Debug.Log("Moved on to ice floor");
+                //Needs to move onto new ice floor and melt the ice floor tile that the player was previously on
+                Debug.Log("The object is:" + collider.gameObject.TryGetComponent(out IceFloorTile iceFloorTile1));
+
+                //Need to interact with Interact Function here
+                if (collider.gameObject.TryGetComponent(out IceFloorTile iceFloorTile))
+                {
+                    iceFloorTile.Interact();
+                }
+
             }
         }
 

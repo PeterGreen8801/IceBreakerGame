@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BreakableFloor
   - Wall
+  - IceFloor
+  - WaterFloor
   layers:
   - Default
   - TransparentFX
