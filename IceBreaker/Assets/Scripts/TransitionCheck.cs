@@ -10,6 +10,7 @@ public class TransitionCheck : MonoBehaviour
     {
         Debug.Log(other.gameObject.name + "This is the name of the object that entered the trigger");
         numberOfTimesSteppedOn++;
+        Debug.Log("Number of steps is now: " + numberOfTimesSteppedOn);
     }
     private void OnTriggerExit(Collider other)
     {
@@ -30,11 +31,11 @@ public class TransitionCheck : MonoBehaviour
         {
             //Set Starting Ice Floor child not active
             Debug.Log(transform.GetChild(1));
-            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(false);
 
             //Set Water Floor child active
             Debug.Log(transform.GetChild(2));
-            transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
         }
 
     }
