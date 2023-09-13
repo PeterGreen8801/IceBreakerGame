@@ -112,6 +112,10 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("There is a wall in the way");
                 break;
             }
+            if (collider.CompareTag("TransitionFloor"))
+            {
+
+            }
             if (collider.CompareTag("IceFloor"))
             {
                 Debug.Log("Moved on to ice floor");

@@ -9,6 +9,7 @@ TagManager:
   - IceFloor
   - WaterFloor
   - StartIceFloor
+  - TransitionFloor
   layers:
   - Default
   - TransparentFX
