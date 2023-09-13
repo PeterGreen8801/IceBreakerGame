@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Can Play animation and then reset level.
                 isDrowning = false;
-                float animationTime = 0.5f;
+                float animationTime = 0.25f;
                 StartCoroutine(ExampleCoroutine());
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
