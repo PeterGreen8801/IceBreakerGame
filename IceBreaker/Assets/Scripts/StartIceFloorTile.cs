@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class StartIceFloorTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        checkPlayer();
     }
+
+    void checkPlayer()
+    {
+        /*
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                Debug.Log("The player is in the collider");
+                break;
+            }
+            else
+            {
+                Debug.Log("Player is NOT in the collider");
+            }
+        }
+        */
+
+    }
+
 }
