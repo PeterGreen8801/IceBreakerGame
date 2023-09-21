@@ -54,8 +54,14 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleInput()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //float verticalInput = Input.GetAxis("Vertical");
+
+        //Gets the horizontal(x) and vertical(y) inputs from the GameInput class
+        float horizontalInput = gameInput.GetHorizontalInputFromVector2();
+        float verticalInput = gameInput.GetVerticalInputFromVector2();
+
+        gameInput.GetMovementVectorNormalized();
 
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
@@ -114,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collider.CompareTag("TransitionFloor"))
             {
-
+                Debug.Log("Moved on to TRANSITION floor");
             }
             if (collider.CompareTag("IceFloor"))
             {
