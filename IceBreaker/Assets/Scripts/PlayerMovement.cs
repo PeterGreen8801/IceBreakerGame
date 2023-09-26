@@ -13,14 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private GameInput gameInput;
-    [SerializeField] private bool movedFromFirstTile = false;
 
     void Update()
     {
         if (!isMoving)
         {
             HandleInput();
-            detect();
         }
         else
         {
@@ -75,35 +73,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void detect()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.1f);
-
-        StartIceFloorTile startIceFloorTile;
-        IceFloorTile iceFloorTile;
-
-
-        foreach (Collider collider in colliders)
-        {
-            //Debug.Log(collider.gameObject.name + " This object is here");
-            //Debug.Log(collider.gameObject.TryGetComponent(out StartIceFloorTile startIceFloorTile) + " This startIceFloorTile object is here");
-            //Debug.Log(collider.gameObject.TryGetComponent(out IceFloorTile iceFloorTile) + " This iceFloorTile object is here");
-
-            if (collider.gameObject.TryGetComponent(out startIceFloorTile))
-            {
-                // Debug.Log("On a StartIceFloorTile now");
-            }
-
-            if (collider.gameObject.TryGetComponent(out iceFloorTile))
-            {
-                //Debug.Log("On an IceFloorTile now");
-                //Melt first start tile now
-                movedFromFirstTile = true;
-                //startIceFloorTile.meltStartingTile();
-            }
-        }
-    }
-
     void TryMove()
     {
         Collider[] colliders = Physics.OverlapSphere(targetPosition, 0.1f); // Adjust the radius as needed.
@@ -112,41 +81,26 @@ public class PlayerMovement : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Wall"))
+            if (collider.TryGetComponent(out WallTile wallTile))
             {
+                //Has WallTile Component
                 canMove = false;
-                Debug.Log("There is a wall in the way");
+                Debug.Log("TRYGETCOMPONENT There is a wall in the way");
                 break;
-            }
-            if (collider.CompareTag("TransitionFloor"))
-            {
-                Debug.Log("Moved on to TRANSITION floor");
-            }
-            if (collider.CompareTag("IceFloor"))
-            {
-                Debug.Log("Moved on to ice floor");
-                //Needs to move onto new ice floor and melt the ice floor tile that the player was previously on
-                Debug.Log("The object is:" + collider.gameObject.TryGetComponent(out IceFloorTile iceFloorTile1));
 
-                //Need to interact with Interact Function here
-                if (collider.gameObject.TryGetComponent(out IceFloorTile iceFloorTile))
+                /* Never use compare tags, TryGetComponent to check component type is superior
+                  if (collider.CompareTag("Wall"))
                 {
-                    iceFloorTile.Interact();
-                }
-
-                //Need a reference to the exact tile the player is on, and then a reference to the tile
-                //the player is moving to. Once player completely moves off the tile, the old tile melts
-
+                    canMove = false;
+                    Debug.Log("There is a wall in the way");
+                    break;
+                }  
+                */
             }
-            if (collider.CompareTag("WaterFloor"))
+            if (collider.TryGetComponent(out WaterFloorTile waterFloorTile))
             {
                 Debug.Log("Moved on to Water floor");
-
-                if (collider.gameObject.TryGetComponent(out WaterFloorTile waterFloorTile))
-                {
-                    waterFloorTile.DrownInteract();
-                    isDrowning = true;
-                }
+                isDrowning = true;
             }
         }
 
