@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6943309169028162228}
-  - component: {fileID: 740604006454044439}
   - component: {fileID: 4291791611186325729}
   m_Layer: 0
   m_Name: Player
@@ -32,22 +31,8 @@ Transform:
   m_Children:
   - {fileID: 427164606045641374}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &740604006454044439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766162858415705153}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c7376729f749b4d8268381d67343e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  gameInput: {fileID: 0}
 --- !u!114 &4291791611186325729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +48,6 @@ MonoBehaviour:
   moveSpeed: 4
   isDrowning: 0
   gameInput: {fileID: 0}
-  movedFromFirstTile: 0
 --- !u!1 &3416080507379488176
 GameObject:
   m_ObjectHideFlags: 0

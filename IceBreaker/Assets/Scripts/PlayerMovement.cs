@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoving = false;
     private Vector3 targetPosition;
 
-    public bool isDrowning = false;
-
+    [SerializeField] private bool isDrowning = false;
 
     [SerializeField] private GameInput gameInput;
 
@@ -23,43 +22,41 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Move();
-            if (isDrowning)
+            DrownPlayerCheck();
+        }
+    }
+
+    void DrownPlayerCheck()
+    {
+        if (isDrowning)
+        {
+            //Can Play animation and then reset level.
+            float animationTime = 0.25f;
+            StartCoroutine(ExampleCoroutine());
+            IEnumerator ExampleCoroutine()
             {
-                //Can Play animation and then reset level.
-                isDrowning = false;
-                float animationTime = 0.25f;
-                StartCoroutine(ExampleCoroutine());
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //Print the time of when the function is first called.
+                Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
-                IEnumerator ExampleCoroutine()
-                {
-                    //Print the time of when the function is first called.
-                    Debug.Log("Started Coroutine at timestamp : " + Time.time);
+                //yield on a new YieldInstruction that waits for 5 seconds.
+                yield return new WaitForSeconds(animationTime);
 
-                    //yield on a new YieldInstruction that waits for 5 seconds.
-                    yield return new WaitForSeconds(animationTime);
+                //Can play an animation here where the player spins and shrinks slowly down into water.
 
-                    //Can play an animation here where the player spins and shrinks slowly down into water.
+                //After we have waited 5 seconds print the time again.
+                Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
-                    //After we have waited 5 seconds print the time again.
-                    Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
+                //Reloads the Active Scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
 
     void HandleInput()
     {
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
-
         //Gets the horizontal(x) and vertical(y) inputs from the GameInput class
         float horizontalInput = gameInput.GetHorizontalInputFromVector2();
         float verticalInput = gameInput.GetVerticalInputFromVector2();
-
-        gameInput.GetMovementVectorNormalized();
 
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
@@ -87,15 +84,6 @@ public class PlayerMovement : MonoBehaviour
                 canMove = false;
                 Debug.Log("TRYGETCOMPONENT There is a wall in the way");
                 break;
-
-                /* Never use compare tags, TryGetComponent to check component type is superior
-                  if (collider.CompareTag("Wall"))
-                {
-                    canMove = false;
-                    Debug.Log("There is a wall in the way");
-                    break;
-                }  
-                */
             }
             if (collider.TryGetComponent(out WaterFloorTile waterFloorTile))
             {
@@ -103,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
                 isDrowning = true;
             }
         }
-
         if (canMove)
         {
             isMoving = true;

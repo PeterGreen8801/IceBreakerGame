@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4063708533655632003}
   - component: {fileID: 4652179324328755332}
   - component: {fileID: 1269890074948394319}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: WaterFloorTile
-  m_TagString: WaterFloor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4211635441453235896
 MeshFilter:

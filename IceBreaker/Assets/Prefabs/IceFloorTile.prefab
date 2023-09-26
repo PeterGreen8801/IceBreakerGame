@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 68050971868202850}
   - component: {fileID: 7917096127193372732}
   - component: {fileID: 2715416077312124136}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: IceFloorTile
-  m_TagString: IceFloor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8038454651228320085
 MeshFilter:

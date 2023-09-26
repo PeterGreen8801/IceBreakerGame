@@ -4,23 +4,9 @@ using UnityEngine;
 
 public class CheckPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name + "This is the name of the object that entered the trigger");
-
-
     }
     private void OnTriggerExit(Collider other)
     {
@@ -34,6 +20,4 @@ public class CheckPlayer : MonoBehaviour
         Debug.Log(transform.GetChild(1));
         transform.GetChild(1).gameObject.SetActive(true);
     }
-
-
 }

@@ -5,12 +5,5 @@ using UnityEngine.SceneManagement;
 
 public class WaterFloorTile : MonoBehaviour
 {
-    public void DrownInteract()
-    {
-        Debug.Log("Player should drown, Interact!");
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-
-    }
 }
