@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransitionCheck : MonoBehaviour
+public class TransitionIceFloorStackCheckPlayer : MonoBehaviour
 {
     public float numberOfTimesSteppedOn = 0;
 

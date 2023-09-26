@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPlayer : MonoBehaviour
+public class IceFloorStackCheckPlayer : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
