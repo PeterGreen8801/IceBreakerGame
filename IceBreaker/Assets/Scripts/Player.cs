@@ -12,13 +12,18 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isDrowning = false;
     [SerializeField] private bool reachedGoal = false;
 
+    private bool freezePlayer = false;
+
     [SerializeField] private GameInput gameInput;
 
     void Update()
     {
         if (!isMoving)
         {
-            HandleInput();
+            if (!freezePlayer)
+            {
+                HandleInput();
+            }
         }
         else
         {
@@ -65,6 +70,7 @@ public class Player : MonoBehaviour
             StartCoroutine(NextLevel());
             IEnumerator NextLevel()
             {
+                freezePlayer = true;
                 yield return new WaitForSeconds(waitTime);
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             }
