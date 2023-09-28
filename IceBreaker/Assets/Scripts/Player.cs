@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Vector3 targetPosition;
 
     [SerializeField] private bool isDrowning = false;
+    [SerializeField] private bool reachedGoal = false;
 
     [SerializeField] private GameInput gameInput;
 
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
         else
         {
             Move();
+            ReachedGoalCheck();
             DrownPlayerCheck();
         }
     }
@@ -52,6 +54,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    void ReachedGoalCheck()
+    {
+        if (reachedGoal)
+        {
+            //Can do a coroutine / passed level screen popup if desired
+            //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
+            float waitTime = 0.5f;
+            StartCoroutine(NextLevel());
+            IEnumerator NextLevel()
+            {
+                yield return new WaitForSeconds(waitTime);
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
+    }
+
     void HandleInput()
     {
         //Gets the horizontal(x) and vertical(y) inputs from the GameInput class
@@ -78,6 +97,7 @@ public class Player : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
+            //Checks if next tile is a wall
             if (collider.TryGetComponent(out WallTile wallTile))
             {
                 //Has WallTile Component
@@ -85,10 +105,17 @@ public class Player : MonoBehaviour
                 Debug.Log("TRYGETCOMPONENT There is a wall in the way");
                 break;
             }
+            //Checks if next tile is water
             if (collider.TryGetComponent(out WaterFloorTile waterFloorTile))
             {
                 Debug.Log("Moved on to Water floor");
                 isDrowning = true;
+            }
+            //Checks if next tile is the goal
+            if (collider.TryGetComponent(out GoalTile goalTile))
+            {
+                Debug.Log("Moved on to Goal Tile");
+                reachedGoal = true;
             }
         }
         if (canMove)
