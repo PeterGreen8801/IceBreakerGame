@@ -47,7 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   isDrowning: 0
+  reachedGoal: 0
   gameInput: {fileID: 0}
+  playerAnimator: {fileID: 4683116148745993628}
 --- !u!1 &3416080507379488176
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +62,8 @@ GameObject:
   - component: {fileID: 4105972882989116575}
   - component: {fileID: 3291938372925434138}
   - component: {fileID: 5251718330816475920}
+  - component: {fileID: 3710062218081022680}
+  - component: {fileID: 4683116148745993628}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -153,3 +157,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &3710062218081022680
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416080507379488176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b9c3c93870740aa4a83de647958833e0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4683116148745993628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416080507379488176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c145436a7d926e439b33c0e65ee7f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameInput gameInput;
 
+    [SerializeField] private PlayerAnimator playerAnimator;
+
+    //[SerializeField] private GameObject playerCollider;
     void Update()
     {
         if (!isMoving)
@@ -37,21 +40,13 @@ public class Player : MonoBehaviour
     {
         if (isDrowning)
         {
-            //Can Play animation and then reset level.
-            float animationTime = 0.25f;
+            DisableCollider();
+            playerAnimator.playDrownAnimation();
+            float animationTime = 1f;
             StartCoroutine(ExampleCoroutine());
             IEnumerator ExampleCoroutine()
             {
-                //Print the time of when the function is first called.
-                Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-                //yield on a new YieldInstruction that waits for 5 seconds.
                 yield return new WaitForSeconds(animationTime);
-
-                //Can play an animation here where the player spins and shrinks slowly down into water.
-
-                //After we have waited 5 seconds print the time again.
-                Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
                 //Reloads the Active Scene
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -138,6 +133,12 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
+    }
+
+    //Disables collider on PlayerVisual. Used to prevent accidental melting while Drown animation plays
+    void DisableCollider()
+    {
+        GetComponentInChildren<Collider>().enabled = false;
     }
 }
 
