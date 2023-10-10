@@ -40,7 +40,9 @@ public class Player : MonoBehaviour
     {
         if (isDrowning)
         {
+            freezePlayer = true;
             DisableCollider();
+            //Can add a drown sound effect here
             playerAnimator.playDrownAnimation();
             float animationTime = 1f;
             StartCoroutine(ExampleCoroutine());
