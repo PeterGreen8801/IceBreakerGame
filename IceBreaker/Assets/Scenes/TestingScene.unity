@@ -7756,11 +7756,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1005322793397649053, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 331b82ab2c0e2b74d805124d11372c85, type: 3}
+    - target: {fileID: 1005322793397649053, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4291791611186325729, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
         type: 3}
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 242209997}
+    - target: {fileID: 4291791611186325729, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
+        type: 3}
+      propertyPath: drownSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a936576e1e30a640844535c71d5a149, type: 3}
     - target: {fileID: 6943309169028162228, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
         type: 3}
       propertyPath: m_RootOrder

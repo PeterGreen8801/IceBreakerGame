@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 4.0f; // Adjust the speed as needed.
+
+    public AudioClip movementSound;
+    public AudioClip drownSound;
+    public AudioClip goalSound;
     private bool isMoving = false;
     private Vector3 targetPosition;
+
+    private AudioSource audioSource;
 
     [SerializeField] private bool isDrowning = false;
     [SerializeField] private bool reachedGoal = false;
@@ -19,6 +25,12 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAnimator playerAnimator;
 
     //[SerializeField] private GameObject playerCollider;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (!isMoving)
@@ -133,6 +145,8 @@ public class Player : MonoBehaviour
 
         if (transform.position == targetPosition)
         {
+            //Works here, but sound is delayed
+            audioSource.PlayOneShot(movementSound);
             isMoving = false;
         }
     }
