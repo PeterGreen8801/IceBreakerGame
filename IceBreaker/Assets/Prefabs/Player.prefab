@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b32a4c5108a4914a898516d85274db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkCounter: 0
   moveSpeed: 4
   movementSound: {fileID: 8300000, guid: 331b82ab2c0e2b74d805124d11372c85, type: 3}
+  drownSound: {fileID: 8300000, guid: 22ece108890b21f47b955a400c8a0416, type: 3}
+  goalSound: {fileID: 0}
   isDrowning: 0
   reachedGoal: 0
   gameInput: {fileID: 0}

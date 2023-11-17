@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public AudioClip drownSound;
     public AudioClip goalSound;
     private bool isMoving = false;
+
+    private bool walkSound = true;
     private Vector3 targetPosition;
 
     private AudioSource audioSource;
@@ -53,8 +55,11 @@ public class Player : MonoBehaviour
         if (isDrowning)
         {
             freezePlayer = true;
+            isDrowning = false;
             DisableCollider();
             //Can add a drown sound effect here
+            audioSource.PlayOneShot(drownSound);
+
             playerAnimator.playDrownAnimation();
             float animationTime = 1f;
             StartCoroutine(ExampleCoroutine());
@@ -124,6 +129,7 @@ public class Player : MonoBehaviour
             if (collider.TryGetComponent(out WaterFloorTile waterFloorTile))
             {
                 Debug.Log("Moved on to Water floor");
+                walkSound = false;
                 isDrowning = true;
             }
             //Checks if next tile is the goal
@@ -145,8 +151,10 @@ public class Player : MonoBehaviour
 
         if (transform.position == targetPosition)
         {
-            //Works here, but sound is delayed
-            audioSource.PlayOneShot(movementSound);
+            if (walkSound)
+            {
+                audioSource.PlayOneShot(movementSound);
+            }
             isMoving = false;
         }
     }
