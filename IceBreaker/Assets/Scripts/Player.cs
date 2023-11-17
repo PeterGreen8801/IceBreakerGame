@@ -79,6 +79,8 @@ public class Player : MonoBehaviour
         {
             //Can do a coroutine / passed level screen popup if desired
             //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            reachedGoal = false;
+            audioSource.PlayOneShot(goalSound);
 
             float waitTime = 0.5f;
             StartCoroutine(NextLevel());
@@ -136,6 +138,7 @@ public class Player : MonoBehaviour
             if (collider.TryGetComponent(out GoalTile goalTile))
             {
                 Debug.Log("Moved on to Goal Tile");
+                walkSound = false;
                 reachedGoal = true;
             }
         }

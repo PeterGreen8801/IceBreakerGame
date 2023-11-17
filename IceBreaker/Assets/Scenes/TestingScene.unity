@@ -7773,6 +7773,11 @@ PrefabInstance:
       objectReference: {fileID: 242209997}
     - target: {fileID: 4291791611186325729, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
         type: 3}
+      propertyPath: goalSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b22bfbdbacfa0445bc9bbfbb0141085, type: 3}
+    - target: {fileID: 4291791611186325729, guid: 1cbbccf10ebcf0940b3ee7569bfa86df,
+        type: 3}
       propertyPath: drownSound
       value: 
       objectReference: {fileID: 8300000, guid: 22ece108890b21f47b955a400c8a0416, type: 3}
