@@ -11,7 +11,7 @@ public class TreasureChestCheck : MonoBehaviour
         player = GetComponentInParent<Player>();
     }
 
-    int chestPointAmount = 25;
+    int chestPointAmount = 50;
 
     private void OnTriggerEnter(Collider other)
     {
