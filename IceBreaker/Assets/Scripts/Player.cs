@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +8,12 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 4.0f; // Adjust the speed as needed.
 
+    public int totalPoints;
+
     public AudioClip movementSound;
     public AudioClip drownSound;
     public AudioClip goalSound;
+    public AudioClip treasureChestSound;
     private bool isMoving = false;
 
     private bool walkSound = true;
@@ -166,6 +170,38 @@ public class Player : MonoBehaviour
     void DisableCollider()
     {
         GetComponentInChildren<Collider>().enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other + "is in the TRIGGER");
+
+        if (other)
+        {
+
+        }
+
+        if (other.TryGetComponent(out TreasureChest treasureChest))
+        {
+            Debug.Log("TOUCHED THE CHEST!!!!!!!");
+            //Add points
+            Destroy(gameObject);
+        }
+    }
+
+    public void AddPoints(int amountToAdd)
+    {
+        totalPoints += amountToAdd;
+    }
+
+    public int GetTotalPoints()
+    {
+        return totalPoints;
+    }
+
+    public void PlayTreasureChestSound()
+    {
+        audioSource.PlayOneShot(treasureChestSound);
     }
 }
 
